@@ -8,7 +8,7 @@ const int HEIGHT = 1200;
 
 static Point attractor[ITERS];
 static int histogram[HEIGHT][WIDTH];
-static uint8_t colorMap[HEIGHT][WIDTH][3];
+static u_int8_t colorMap[HEIGHT][WIDTH][3];
 
 int main(int argc, char **argv) {
 	// 2.01, 2.53, 1.61, -0.33
