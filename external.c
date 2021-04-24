@@ -80,9 +80,11 @@ void makeHistogram(int n, Point attractor[n], int w, int h, int histogram[h][w])
 Color getHue(double density) {
 	Color ret;
 
+	// 	vvvvvvv change this vvvvvvv //
 	ret.r = fmax(255 - density * 4, 0);
 	ret.g = fmax(255 - density * 8, 0);
 	ret.b = fmax(255 - density * 20, 0);
+	// 	^^^^^^^^^^^^^^^^^^^^^^^^^^^ //
 
 	return ret;
 }
