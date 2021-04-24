@@ -65,7 +65,7 @@ void makeHistogram(int n, Point attractor[n], int w, int h, int histogram[h][w])
 	//-- re-adjusts all points in `attractor` to  --//
 	//-- fill a box with width `w` and height `h` --//
 	//-- and writes the values in that box to the --//
-	//-- matrix `histogram`						  --//
+	//-- matrix `histogram`                       --//
 	int x, y;
 
 	for (int i = 0; i < n; i++) {
@@ -109,7 +109,7 @@ void makeColorMap(int w, int h, int histogram[h][w], uint8_t colorMap[h][w][3]) 
 				colorMap[i][j][0] = 255;
 				colorMap[i][j][1] = 255;
 				colorMap[i][j][2] = 255;
-			} else {					// passed through at least once
+			} else {                    // passed through at least once
 				Color hue = getHue(histogram[i][j] * scaling - offset);
 
 				colorMap[i][j][0] = hue.r;
@@ -124,6 +124,7 @@ int writeToPPMFile(int w, int h, uint8_t colorMap[h][w][3], const char *fileName
 	FILE *file = fopen(fileName, "wb");
 	if (!file) return 1;
 
+	//-- write header to PPM file; P6 = 8-bit non-ASCII file --//
 	fprintf(file, "P6 %d %d %d\n", w, h, 255);
 
 	for (int i = 0; i < h; i++)
