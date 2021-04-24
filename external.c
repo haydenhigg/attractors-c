@@ -90,7 +90,7 @@ Color getHue(double density) {
 	return ret;
 }
 
-void makeColorMap(int w, int h, int histogram[h][w], uint8_t colorMap[h][w][3]) {
+void makeColorMap(int w, int h, int histogram[h][w], u_int8_t colorMap[h][w][3]) {
 	int min = INT32_MAX;
 	int max = INT32_MIN;
 
@@ -123,7 +123,7 @@ void makeColorMap(int w, int h, int histogram[h][w], uint8_t colorMap[h][w][3]) 
 	}
 }
 
-int writeToPPMFile(int w, int h, uint8_t colorMap[h][w][3], const char *fileName) {
+int writeToPPMFile(int w, int h, u_int8_t colorMap[h][w][3], const char *fileName) {
 	FILE *file = fopen(fileName, "wb");
 	if (!file) return 1;
 
