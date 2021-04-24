@@ -2,9 +2,9 @@
 
 #include "external.c"
 
-const int ITERS = 100000000;
-const int WIDTH = 1200;
-const int HEIGHT = 1200;
+#define ITERS 100000000
+#define WIDTH 1200
+#define HEIGHT 1200
 
 static Point attractor[ITERS];
 static int histogram[HEIGHT][WIDTH];
