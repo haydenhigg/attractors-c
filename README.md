@@ -1,6 +1,6 @@
 # pdj-attractors
 
-Peter de Jong Attractors in C. See [Paul Bourke's site](http://paulbourke.net/fractals/peterdejong/) for an explanation. All code is commented.
+Peter de Jong Attractors in C. See [Paul Bourke's site](http://paulbourke.net/fractals/peterdejong/) for an explanation. All code is commented. This implementation is tested on Unix only.
 
 ## to-do
 
