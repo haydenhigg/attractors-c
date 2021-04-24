@@ -149,22 +149,12 @@ static long histogram[HEIGHT][WIDTH];
 static uint8_t colorMap[HEIGHT][WIDTH][3];
 
 int main(void) {
+	// 2.01, 2.53, 1.61, -0.33
+	// -2, -2, -1.2, 2
+	
 	generate(ITERS, attractor, newParams(-2, -2, -1.2, 2));
-	// generate(ITERS, attractor, newParams(2.01, 2.53, 1.61, -0.33));
 	makeHistogram(ITERS, attractor, WIDTH, HEIGHT, histogram);
 	makeColorMap(WIDTH, HEIGHT, histogram, colorMap);
 
 	return writeToFile(WIDTH, HEIGHT, colorMap, "test.ppm");
 }
-
-// /* Open PPM File */
-// FILE *file = fopen("young.ppm", "wb"); if (!file) return -1;
-
-// /* Write PPM Header */
-// fprintf(file, "P6 %d %d %d\n", WIDTH, HEIGHT, 255); /* width, height, maxval */
-
-// /* Write Image Data */
-// for ()
-
-// /* Close PPM File */
-// fclose(file);
