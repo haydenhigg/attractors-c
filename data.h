@@ -7,7 +7,7 @@ typedef struct {
 } Point;
 
 typedef struct {
-	uint8_t r, g, b;
+	u_int8_t r, g, b;
 } Color;
 
 AttractorParams newParams(double, double, double, double);
