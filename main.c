@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <stdio.h>
 
 #include "external.c"
 
@@ -17,7 +16,7 @@ int main(int argc, char **argv) {
 	// 0.56, -5.6, -1.9, 2
 	
 	AttractorParams params = newParams(2.01, 2.53, 1.61, -0.33);
-	char *outfile = argc > 1 ? argv[1] : sprintf("%f_%f_%f_%f.ppm", params.a, params.b, params.c, params.d);
+	char *outfile = argc > 1 ? argv[1] : "out.ppm";
 
 	generate(ITERS, attractor, params);
 	makeHistogram(ITERS, attractor, WIDTH, HEIGHT, histogram);
