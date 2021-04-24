@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 
 #include "external.c"
 
@@ -14,10 +15,13 @@ int main(int argc, char **argv) {
 	// 2.01, 2.53, 1.61, -0.33
 	// -2, -2, -1.2, 2
 	// 0.56, -5.6, -1.9, 2
+	
+	AttractorParams params = newParams(2.01, 2.53, 1.61, -0.33);
+	char *outfile = argc > 1 ? argv[1] : sprintf("%f_%f_%f_%f.ppm", params.a, params.b params.c, params.d);
 
-	generate(ITERS, attractor, newParams(2.01, 2.53, 1.61, -0.33));
+	generate(ITERS, attractor, params);
 	makeHistogram(ITERS, attractor, WIDTH, HEIGHT, histogram);
 	makeColorMap(WIDTH, HEIGHT, histogram, colorMap);
 
-	return writeToPPMFile(WIDTH, HEIGHT, colorMap, argc > 1 ? argv[1] : "out.ppm");
+	return writeToPPMFile(WIDTH, HEIGHT, colorMap, outfile);
 }
