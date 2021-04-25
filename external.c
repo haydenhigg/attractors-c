@@ -100,7 +100,7 @@ void makeColorMap(int w, int h, u_int8_t histogram[h][w], u_int8_t colorMap[h][w
 
 	for (int i = 0; i < h; i++) {
 		for (int j = 0; j < w; j++) {
-			if (histogram[i][j] < min && histogram[i][j] > 0)
+			if (histogram[i][j] < min)
 				min = histogram[i][j];
 			else if (histogram[i][j] > max)
 				max = histogram[i][j];
