@@ -2,9 +2,9 @@
 
 #include "external.c"
 
-#define ITERS 700000000
-#define WIDTH 11000
-#define HEIGHT 11000
+#define ITERS 50000000
+#define WIDTH 4000
+#define HEIGHT 4000
 
 static Point attractor[ITERS];
 static u_int8_t histogram[HEIGHT][WIDTH];
