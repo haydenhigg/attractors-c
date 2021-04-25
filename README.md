@@ -5,4 +5,6 @@ Peter de Jong Attractors in C. See [Paul Bourke's site](http://paulbourke.net/fr
 ## to-do
 
 - [ ] allow for writing to more than just PPM
+- [ ] make hue functions better
 - [ ] make default hue functions
+- [ ] read params and image metadata from config file
