@@ -10,7 +10,7 @@ Color getHue(double);
  * but with each raw count scaled and replaced by a color
  * array ([r, g, b]).
  */
-void makeColorMap(int w, int h, int[h][w], u_int8_t[h][w][3]);
+void makeColorMap(int w, int h, u_int8_t[h][w], u_int8_t[h][w][3]);
 
 /** 
  * Writes the 3D array made by `makeColorMap` to a file in
