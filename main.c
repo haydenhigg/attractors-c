@@ -2,12 +2,12 @@
 
 #include "external.c"
 
-#define ITERS 100000000
-#define WIDTH 1200
-#define HEIGHT 1200
+#define ITERS 700000000
+#define WIDTH 11000
+#define HEIGHT 11000
 
 static Point attractor[ITERS];
-static int histogram[HEIGHT][WIDTH];
+static u_int8_t histogram[HEIGHT][WIDTH];
 static u_int8_t colorMap[HEIGHT][WIDTH][3];
 
 int main(int argc, char **argv) {
