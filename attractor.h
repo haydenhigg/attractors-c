@@ -9,4 +9,4 @@ void generate(int iters, Point[iters], AttractorParams);
  * Makes a density matrix using the points generated with
  * `generate`.
  */
-void makeHistogram(int n, Point[n], int w, int h, int[h][w]);
+void makeHistogram(int n, Point[n], int w, int h, u_int8_t[h][w]);
