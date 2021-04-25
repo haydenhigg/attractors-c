@@ -1,6 +1,10 @@
 #include <stdlib.h>
 #include <stdio.h>
+
 #include <stdint.h>
+#include <limits.h>
+#include <float.h>
+
 #include <math.h>
 
 #include "data.h"
@@ -34,10 +38,10 @@ void generate(int iters, Point attractor[iters], AttractorParams params) {
 	}
 }
 
-void makeHistogram(int n, Point attractor[n], int w, int h, int histogram[h][w]) {
+void makeHistogram(int n, Point attractor[n], int w, int h, u_int8_t histogram[h][w]) {
 	//-- find top left and bottom right --//
-	Point min = {.x = INT32_MAX, .y = INT32_MAX};
-	Point max = {.x = INT32_MIN, .y = INT32_MIN};
+	Point min = {.x = __DBL_MAX__, .y = __DBL_MAX__};
+	Point max = {.x = __DBL_MIN__, .y = __DBL_MIN__};
 
 	for (int i = 0; i < n; i++) {
 		if (attractor[i].x < min.x)
@@ -73,7 +77,7 @@ void makeHistogram(int n, Point attractor[n], int w, int h, int histogram[h][w])
 		x = attractor[i].x * widthScaling - offsetX;
 		y = attractor[i].y * heightScaling - offsetY;
 
-		histogram[y][x]++;
+		histogram[y][x] = fmin(histogram[y][x] + 1, UINT8_MAX);
 	}
 }
 
@@ -90,9 +94,9 @@ Color getHue(double density) {
 	return ret;
 }
 
-void makeColorMap(int w, int h, int histogram[h][w], u_int8_t colorMap[h][w][3]) {
-	int min = INT32_MAX;
-	int max = INT32_MIN;
+void makeColorMap(int w, int h, u_int8_t histogram[h][w], u_int8_t colorMap[h][w][3]) {
+	u_int8_t min = UINT8_MAX;
+	u_int8_t max = 0;
 
 	for (int i = 0; i < h; i++) {
 		for (int j = 0; j < w; j++) {
