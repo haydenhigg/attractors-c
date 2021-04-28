@@ -86,9 +86,9 @@ void makeHistogram(int n, Point attractor[n], int w, int h, u_int8_t histogram[h
 Color amber(double density) {
 	Color ret;
 
-	ret.r = fmax(255 - (int16) density * 4, 0);
-	ret.g = fmax(255 - (int16) density * 8, 0);
-	ret.b = fmax(255 - (int16) density * 20, 0);
+	ret.r = fmax(255 - (int16_t) density * 4, 0);
+	ret.g = fmax(255 - (int16_t) density * 8, 0);
+	ret.b = fmax(255 - (int16_t) density * 20, 0);
 
 	return ret;
 }
