@@ -61,8 +61,8 @@ void makeHistogram(int n, Point attractor[n], int w, int h, u_int8_t histogram[h
 			histogram[i][j] = 0;
 
 	//-- so that the math is easier when scaling --//
-	double widthScaling = w / (max.x - min.x);
-	double heightScaling = h / (max.y - min.y);
+	double widthScaling = (w - 1) / (max.x - min.x);
+	double heightScaling = (h - 1) / (max.y - min.y);
 
 	double offsetX = min.x * widthScaling;
 	double offsetY = min.y * heightScaling;
@@ -77,19 +77,18 @@ void makeHistogram(int n, Point attractor[n], int w, int h, u_int8_t histogram[h
 		x = attractor[i].x * widthScaling - offsetX;
 		y = attractor[i].y * heightScaling - offsetY;
 
-		histogram[y][x] = fmin(histogram[y][x] + 1, UINT8_MAX);
+		if (histogram[y][x] < UINT8_MAX))
+			histogram[y][x]++;
 	}
 }
 
 /**** IMAGE ****/
-Color getHue(double density) {
+Color amber(double density) {
 	Color ret;
 
-	// 	vvvvvvv change this vvvvvvv //
-	ret.r = fmax(255 - density * 4, 0);
-	ret.g = fmax(255 - density * 8, 0);
-	ret.b = fmax(255 - density * 20, 0);
-	// 	^^^^^^^^^^^^^^^^^^^^^^^^^^^ //
+	ret.r = fmax(255 - (int16) density * 4, 0);
+	ret.g = fmax(255 - (int16) density * 8, 0);
+	ret.b = fmax(255 - (int16) density * 20, 0);
 
 	return ret;
 }
@@ -111,18 +110,12 @@ void makeColorMap(int w, int h, u_int8_t histogram[h][w], u_int8_t colorMap[h][w
 	double offset = min * scaling;
 
 	for (int i = 0; i < h; i++) {
-		for (int j = 0; j < w; j++) {
-			if (histogram[i][j] == 0) { // blank
-				colorMap[i][j][0] = 255;
-				colorMap[i][j][1] = 255;
-				colorMap[i][j][2] = 255;
-			} else {                    // passed through at least once
-				Color hue = getHue(histogram[i][j] * scaling - offset);
+		for (int j = 0; j < w; j++) {     // passed through at least once
+			Color hue = amber(histogram[i][j] * scaling - offset);
 
-				colorMap[i][j][0] = hue.r;
-				colorMap[i][j][1] = hue.g;
-				colorMap[i][j][2] = hue.b;
-			}
+			colorMap[i][j][0] = hue.r;
+			colorMap[i][j][1] = hue.g;
+			colorMap[i][j][2] = hue.b;
 		}
 	}
 }
