@@ -77,7 +77,7 @@ void makeHistogram(int n, Point attractor[n], int w, int h, u_int8_t histogram[h
 		x = attractor[i].x * widthScaling - offsetX;
 		y = attractor[i].y * heightScaling - offsetY;
 
-		if (histogram[y][x] < UINT8_MAX))
+		if (histogram[y][x] < UINT8_MAX)
 			histogram[y][x]++;
 	}
 }
